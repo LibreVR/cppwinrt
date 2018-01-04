@@ -86,6 +86,7 @@ struct IHolographicSpaceCameraRemovedEventArgs;
 struct IHolographicSpaceStatics;
 struct IHolographicSpaceStatics2;
 struct IHolographicSpaceStatics3;
+struct IHolographicSpaceStatics4;
 struct HolographicCamera;
 struct HolographicCameraPose;
 struct HolographicCameraRenderingParameters;
@@ -208,6 +209,7 @@ template <> struct guid<Windows::Graphics::Holographic::IHolographicSpaceCameraR
 template <> struct guid<Windows::Graphics::Holographic::IHolographicSpaceStatics>{ static constexpr GUID value{ 0x364E6064,0xC8F2,0x3BA1,{ 0x83,0x91,0x66,0xB8,0x48,0x9E,0x67,0xFD } }; };
 template <> struct guid<Windows::Graphics::Holographic::IHolographicSpaceStatics2>{ static constexpr GUID value{ 0x0E777088,0x75FC,0x48AF,{ 0x87,0x58,0x06,0x52,0xF6,0xF0,0x7C,0x59 } }; };
 template <> struct guid<Windows::Graphics::Holographic::IHolographicSpaceStatics3>{ static constexpr GUID value{ 0x3B00DE3D,0xB1A3,0x4DFE,{ 0x8E,0x79,0xFE,0xC5,0x90,0x9E,0x6D,0xF8 } }; };
+template <> struct guid<Windows::Graphics::Holographic::IHolographicSpaceStatics4>{ static constexpr GUID value{ 0x5C4EE536,0x6A98,0x4B86,{ 0xA1,0x70,0x58,0x70,0x13,0xD6,0xFD,0x4B } }; };
 template <> struct default_interface<Windows::Graphics::Holographic::HolographicCamera>{ using type = Windows::Graphics::Holographic::IHolographicCamera; };
 template <> struct default_interface<Windows::Graphics::Holographic::HolographicCameraPose>{ using type = Windows::Graphics::Holographic::IHolographicCameraPose; };
 template <> struct default_interface<Windows::Graphics::Holographic::HolographicCameraRenderingParameters>{ using type = Windows::Graphics::Holographic::IHolographicCameraRenderingParameters; };
@@ -445,6 +447,13 @@ struct consume_Windows_Graphics_Holographic_IHolographicSpaceStatics3
 };
 template <> struct consume<Windows::Graphics::Holographic::IHolographicSpaceStatics3> { template <typename D> using type = consume_Windows_Graphics_Holographic_IHolographicSpaceStatics3<D>; };
 
+template <typename D>
+struct consume_Windows_Graphics_Holographic_IHolographicSpaceStatics4
+{
+    Windows::Graphics::Holographic::HolographicSpace CreateForHWND(HWND window, const GUID * guid) const;
+};
+template <> struct consume<Windows::Graphics::Holographic::IHolographicSpaceStatics4> { template <typename D> using type = consume_Windows_Graphics_Holographic_IHolographicSpaceStatics4<D>; };
+
 template <> struct abi<Windows::Graphics::Holographic::IHolographicCamera>{ struct type : ::IInspectable
 {
     virtual HRESULT __stdcall get_RenderTargetSize(Windows::Foundation::Size* value) = 0;
@@ -615,6 +624,11 @@ template <> struct abi<Windows::Graphics::Holographic::IHolographicSpaceStatics2
 template <> struct abi<Windows::Graphics::Holographic::IHolographicSpaceStatics3>{ struct type : ::IInspectable
 {
     virtual HRESULT __stdcall get_IsConfigured(bool* value) = 0;
+};};
+
+template <> struct abi<Windows::Graphics::Holographic::IHolographicSpaceStatics4>{ struct type : ::IInspectable
+{
+    virtual HRESULT __stdcall CreateForHWND(HWND window, const GUID * guid, ::IUnknown** value) = 0;
 };};
 
 }

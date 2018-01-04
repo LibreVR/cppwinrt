@@ -116,6 +116,7 @@ struct WINRT_EBO HolographicSpace :
     static IsAvailableChanged_revoker IsAvailableChanged(auto_revoke_t, Windows::Foundation::EventHandler<Windows::Foundation::IInspectable> const& handler);
     static void IsAvailableChanged(event_token const& token);
     static bool IsConfigured();
+    static Windows::Graphics::Holographic::HolographicSpace CreateForHWND(HWND window);
 };
 
 struct WINRT_EBO HolographicSpaceCameraAddedEventArgs :

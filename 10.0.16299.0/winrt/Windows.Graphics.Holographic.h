@@ -551,6 +551,13 @@ template <typename D> bool consume_Windows_Graphics_Holographic_IHolographicSpac
     return value;
 }
 
+template <typename D> Windows::Graphics::Holographic::HolographicSpace consume_Windows_Graphics_Holographic_IHolographicSpaceStatics4<D>::CreateForHWND(HWND window, const GUID * guid) const
+{
+    Windows::Graphics::Holographic::HolographicSpace value{ nullptr };
+    check_hresult(WINRT_SHIM(Windows::Graphics::Holographic::IHolographicSpaceStatics4)->CreateForHWND(window, guid, put_abi(value)));
+    return value;
+}
+
 template <typename D>
 struct produce<D, Windows::Graphics::Holographic::IHolographicCamera> : produce_base<D, Windows::Graphics::Holographic::IHolographicCamera>
 {
@@ -1504,6 +1511,11 @@ inline void HolographicSpace::IsAvailableChanged(event_token const& token)
 inline bool HolographicSpace::IsConfigured()
 {
     return get_activation_factory<HolographicSpace, Windows::Graphics::Holographic::IHolographicSpaceStatics3>().IsConfigured();
+}
+
+inline Windows::Graphics::Holographic::HolographicSpace HolographicSpace::CreateForHWND(HWND window)
+{
+    return get_activation_factory<HolographicSpace, Windows::Graphics::Holographic::IHolographicSpaceStatics4>().CreateForHWND(window, &guid_of<IHolographicSpace>());
 }
 
 }

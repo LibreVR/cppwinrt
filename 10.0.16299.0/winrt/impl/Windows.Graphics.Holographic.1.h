@@ -178,4 +178,11 @@ struct WINRT_EBO IHolographicSpaceStatics3 :
     IHolographicSpaceStatics3(std::nullptr_t = nullptr) noexcept {}
 };
 
+struct WINRT_EBO IHolographicSpaceStatics4 :
+    Windows::Foundation::IInspectable,
+    impl::consume_t<IHolographicSpaceStatics4>
+{
+    IHolographicSpaceStatics4(std::nullptr_t = nullptr) noexcept {}
+};
+
 }
