@@ -328,15 +328,6 @@ struct consume_Windows_Perception_Spatial_ISpatialAnchorStore
 template <> struct consume<Windows::Perception::Spatial::ISpatialAnchorStore> { template <typename D> using type = consume_Windows_Perception_Spatial_ISpatialAnchorStore<D>; };
 
 template <typename D>
-struct consume_Windows_Perception_Spatial_ISpatialAnchorTransferManagerStatics
-{
-    [[deprecated("Use SpatialEntityStore instead of SpatialAnchorTransferManager. For more info, see MSDN.")]] Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IMapView<hstring, Windows::Perception::Spatial::SpatialAnchor>> TryImportAnchorsAsync(Windows::Storage::Streams::IInputStream const& stream) const;
-    [[deprecated("Use SpatialEntityStore instead of SpatialAnchorTransferManager. For more info, see MSDN.")]] Windows::Foundation::IAsyncOperation<bool> TryExportAnchorsAsync(param::async_iterable<Windows::Foundation::Collections::IKeyValuePair<hstring, Windows::Perception::Spatial::SpatialAnchor>> const& anchors, Windows::Storage::Streams::IOutputStream const& stream) const;
-    [[deprecated("Use SpatialEntityStore instead of SpatialAnchorTransferManager. For more info, see MSDN.")]] Windows::Foundation::IAsyncOperation<Windows::Perception::Spatial::SpatialPerceptionAccessStatus> RequestAccessAsync() const;
-};
-template <> struct consume<Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics> { template <typename D> using type = consume_Windows_Perception_Spatial_ISpatialAnchorTransferManagerStatics<D>; };
-
-template <typename D>
 struct consume_Windows_Perception_Spatial_ISpatialBoundingVolume
 {
 };

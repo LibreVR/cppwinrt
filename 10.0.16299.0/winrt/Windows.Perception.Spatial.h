@@ -113,27 +113,6 @@ template <typename D> void consume_Windows_Perception_Spatial_ISpatialAnchorStor
     check_hresult(WINRT_SHIM(Windows::Perception::Spatial::ISpatialAnchorStore)->Clear());
 }
 
-template <typename D> Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IMapView<hstring, Windows::Perception::Spatial::SpatialAnchor>> consume_Windows_Perception_Spatial_ISpatialAnchorTransferManagerStatics<D>::TryImportAnchorsAsync(Windows::Storage::Streams::IInputStream const& stream) const
-{
-    Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IMapView<hstring, Windows::Perception::Spatial::SpatialAnchor>> operation{ nullptr };
-    check_hresult(WINRT_SHIM(Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics)->TryImportAnchorsAsync(get_abi(stream), put_abi(operation)));
-    return operation;
-}
-
-template <typename D> Windows::Foundation::IAsyncOperation<bool> consume_Windows_Perception_Spatial_ISpatialAnchorTransferManagerStatics<D>::TryExportAnchorsAsync(param::async_iterable<Windows::Foundation::Collections::IKeyValuePair<hstring, Windows::Perception::Spatial::SpatialAnchor>> const& anchors, Windows::Storage::Streams::IOutputStream const& stream) const
-{
-    Windows::Foundation::IAsyncOperation<bool> operation{ nullptr };
-    check_hresult(WINRT_SHIM(Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics)->TryExportAnchorsAsync(get_abi(anchors), get_abi(stream), put_abi(operation)));
-    return operation;
-}
-
-template <typename D> Windows::Foundation::IAsyncOperation<Windows::Perception::Spatial::SpatialPerceptionAccessStatus> consume_Windows_Perception_Spatial_ISpatialAnchorTransferManagerStatics<D>::RequestAccessAsync() const
-{
-    Windows::Foundation::IAsyncOperation<Windows::Perception::Spatial::SpatialPerceptionAccessStatus> result{ nullptr };
-    check_hresult(WINRT_SHIM(Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics)->RequestAccessAsync(put_abi(result)));
-    return result;
-}
-
 template <typename D> Windows::Perception::Spatial::SpatialBoundingVolume consume_Windows_Perception_Spatial_ISpatialBoundingVolumeStatics<D>::FromBox(Windows::Perception::Spatial::SpatialCoordinateSystem const& coordinateSystem, Windows::Perception::Spatial::SpatialBoundingBox const& box) const
 {
     Windows::Perception::Spatial::SpatialBoundingVolume value{ nullptr };
@@ -1781,21 +1760,6 @@ inline Windows::Perception::Spatial::SpatialAnchor SpatialAnchor::TryCreateRelat
 inline Windows::Foundation::IAsyncOperation<Windows::Perception::Spatial::SpatialAnchorStore> SpatialAnchorManager::RequestStoreAsync()
 {
     return get_activation_factory<SpatialAnchorManager, Windows::Perception::Spatial::ISpatialAnchorManagerStatics>().RequestStoreAsync();
-}
-
-inline Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IMapView<hstring, Windows::Perception::Spatial::SpatialAnchor>> SpatialAnchorTransferManager::TryImportAnchorsAsync(Windows::Storage::Streams::IInputStream const& stream)
-{
-    return get_activation_factory<SpatialAnchorTransferManager, Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics>().TryImportAnchorsAsync(stream);
-}
-
-inline Windows::Foundation::IAsyncOperation<bool> SpatialAnchorTransferManager::TryExportAnchorsAsync(param::async_iterable<Windows::Foundation::Collections::IKeyValuePair<hstring, Windows::Perception::Spatial::SpatialAnchor>> const& anchors, Windows::Storage::Streams::IOutputStream const& stream)
-{
-    return get_activation_factory<SpatialAnchorTransferManager, Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics>().TryExportAnchorsAsync(anchors, stream);
-}
-
-inline Windows::Foundation::IAsyncOperation<Windows::Perception::Spatial::SpatialPerceptionAccessStatus> SpatialAnchorTransferManager::RequestAccessAsync()
-{
-    return get_activation_factory<SpatialAnchorTransferManager, Windows::Perception::Spatial::ISpatialAnchorTransferManagerStatics>().RequestAccessAsync();
 }
 
 inline Windows::Perception::Spatial::SpatialBoundingVolume SpatialBoundingVolume::FromBox(Windows::Perception::Spatial::SpatialCoordinateSystem const& coordinateSystem, Windows::Perception::Spatial::SpatialBoundingBox const& box)

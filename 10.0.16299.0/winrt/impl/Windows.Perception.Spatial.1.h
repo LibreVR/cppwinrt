@@ -52,13 +52,6 @@ struct WINRT_EBO ISpatialAnchorStore :
     ISpatialAnchorStore(std::nullptr_t = nullptr) noexcept {}
 };
 
-struct WINRT_EBO [[deprecated("Use SpatialEntityStore instead of SpatialAnchorTransferManager. For more info, see MSDN.")]] ISpatialAnchorTransferManagerStatics :
-    Windows::Foundation::IInspectable,
-    impl::consume_t<ISpatialAnchorTransferManagerStatics>
-{
-    ISpatialAnchorTransferManagerStatics(std::nullptr_t = nullptr) noexcept {}
-};
-
 struct WINRT_EBO ISpatialBoundingVolume :
     Windows::Foundation::IInspectable,
     impl::consume_t<ISpatialBoundingVolume>
