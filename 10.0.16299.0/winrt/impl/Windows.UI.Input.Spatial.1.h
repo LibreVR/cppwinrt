@@ -104,6 +104,13 @@ struct WINRT_EBO ISpatialInteractionManagerStatics :
     ISpatialInteractionManagerStatics(std::nullptr_t = nullptr) noexcept {}
 };
 
+struct WINRT_EBO ISpatialInteractionManagerStatics2 :
+    Windows::Foundation::IInspectable,
+    impl::consume_t<ISpatialInteractionManagerStatics2>
+{
+    ISpatialInteractionManagerStatics2(std::nullptr_t = nullptr) noexcept {}
+};
+
 struct WINRT_EBO ISpatialInteractionSource :
     Windows::Foundation::IInspectable,
     impl::consume_t<ISpatialInteractionSource>

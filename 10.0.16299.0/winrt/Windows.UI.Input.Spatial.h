@@ -563,6 +563,13 @@ template <typename D> Windows::UI::Input::Spatial::SpatialInteractionManager con
     return value;
 }
 
+template <typename D> Windows::UI::Input::Spatial::SpatialInteractionManager consume_Windows_UI_Input_Spatial_ISpatialInteractionManagerStatics2<D>::GetForHWND(HWND window, const GUID * guid) const
+{
+    Windows::UI::Input::Spatial::SpatialInteractionManager value{ nullptr };
+	check_hresult(WINRT_SHIM(Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2)->GetForHWND(window, guid, put_abi(value)));
+	return value;
+}
+
 template <typename D> uint32_t consume_Windows_UI_Input_Spatial_ISpatialInteractionSource<D>::Id() const noexcept
 {
     uint32_t value{};
@@ -2564,6 +2571,11 @@ inline Windows::UI::Input::Spatial::SpatialInteractionManager SpatialInteraction
     return get_activation_factory<SpatialInteractionManager, Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics>().GetForCurrentView();
 }
 
+inline Windows::UI::Input::Spatial::SpatialInteractionManager SpatialInteractionManager::GetForHWND(HWND window)
+{
+    return get_activation_factory<SpatialInteractionManager, Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2>().GetForHWND(window, &guid_of<SpatialInteractionManager>());
+}
+
 inline Windows::UI::Input::Spatial::SpatialPointerPose SpatialPointerPose::TryGetAtTimestamp(Windows::Perception::Spatial::SpatialCoordinateSystem const& coordinateSystem, Windows::Perception::PerceptionTimestamp const& timestamp)
 {
     return get_activation_factory<SpatialPointerPose, Windows::UI::Input::Spatial::ISpatialPointerPoseStatics>().TryGetAtTimestamp(coordinateSystem, timestamp);
@@ -2611,6 +2623,9 @@ template<> struct hash<winrt::Windows::UI::Input::Spatial::ISpatialInteractionMa
 
 template<> struct hash<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics> : 
     winrt::impl::impl_hash_unknown<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics> {};
+
+template<> struct hash<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2> : 
+    winrt::impl::impl_hash_unknown<winrt::Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2> {};
 
 template<> struct hash<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSource> : 
     winrt::impl::impl_hash_unknown<winrt::Windows::UI::Input::Spatial::ISpatialInteractionSource> {};

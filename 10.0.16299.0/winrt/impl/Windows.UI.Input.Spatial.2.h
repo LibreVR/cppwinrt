@@ -75,6 +75,7 @@ struct WINRT_EBO SpatialInteractionManager :
 {
     SpatialInteractionManager(std::nullptr_t) noexcept {}
     static Windows::UI::Input::Spatial::SpatialInteractionManager GetForCurrentView();
+	static Windows::UI::Input::Spatial::SpatialInteractionManager GetForHWND(HWND window);
 };
 
 struct WINRT_EBO SpatialInteractionSource :

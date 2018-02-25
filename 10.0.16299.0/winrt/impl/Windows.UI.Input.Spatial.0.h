@@ -94,6 +94,7 @@ struct ISpatialInteractionDetectedEventArgs;
 struct ISpatialInteractionDetectedEventArgs2;
 struct ISpatialInteractionManager;
 struct ISpatialInteractionManagerStatics;
+struct ISpatialInteractionManagerStatics2;
 struct ISpatialInteractionSource;
 struct ISpatialInteractionSource2;
 struct ISpatialInteractionSource3;
@@ -169,6 +170,7 @@ template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionDete
 template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionDetectedEventArgs2>{ using type = interface_category; };
 template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionManager>{ using type = interface_category; };
 template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics>{ using type = interface_category; };
+template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2> { using type = interface_category; };
 template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionSource>{ using type = interface_category; };
 template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionSource2>{ using type = interface_category; };
 template <> struct category<Windows::UI::Input::Spatial::ISpatialInteractionSource3>{ using type = interface_category; };
@@ -243,6 +245,7 @@ template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionDetected
 template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionDetectedEventArgs2>{ static constexpr auto & value{ L"Windows.UI.Input.Spatial.ISpatialInteractionDetectedEventArgs2" }; };
 template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionManager>{ static constexpr auto & value{ L"Windows.UI.Input.Spatial.ISpatialInteractionManager" }; };
 template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics>{ static constexpr auto & value{ L"Windows.UI.Input.Spatial.ISpatialInteractionManagerStatics" }; };
+template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2> { static constexpr auto & value{ L"Windows.UI.Input.Spatial.ISpatialInteractionManagerStatics2" }; };
 template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionSource>{ static constexpr auto & value{ L"Windows.UI.Input.Spatial.ISpatialInteractionSource" }; };
 template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionSource2>{ static constexpr auto & value{ L"Windows.UI.Input.Spatial.ISpatialInteractionSource2" }; };
 template <> struct name<Windows::UI::Input::Spatial::ISpatialInteractionSource3>{ static constexpr auto & value{ L"Windows.UI.Input.Spatial.ISpatialInteractionSource3" }; };
@@ -317,6 +320,7 @@ template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionDetected
 template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionDetectedEventArgs2>{ static constexpr GUID value{ 0x7B263E93,0x5F13,0x419C,{ 0x97,0xD5,0x83,0x46,0x78,0x26,0x6A,0xA6 } }; };
 template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionManager>{ static constexpr GUID value{ 0x32A64EA8,0xA15A,0x3995,{ 0xB8,0xBD,0x80,0x51,0x3C,0xB5,0xAD,0xEF } }; };
 template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics>{ static constexpr GUID value{ 0x00E31FA6,0x8CA2,0x30BF,{ 0x91,0xFE,0xD9,0xCB,0x4A,0x00,0x89,0x90 } }; };
+template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2>{ static constexpr GUID value{ 0x5C4EE536,0x6A98,0x4B86,{ 0xA1,0x70,0x58,0x70,0x13,0xD6,0xFD,0x4B } }; };
 template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionSource>{ static constexpr GUID value{ 0xFB5433BA,0xB0B3,0x3148,{ 0x9F,0x3B,0xE9,0xF5,0xDE,0x56,0x8F,0x5D } }; };
 template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionSource2>{ static constexpr GUID value{ 0xE4C5B70C,0x0470,0x4028,{ 0x88,0xC0,0xA0,0xEB,0x44,0xD3,0x4E,0xFE } }; };
 template <> struct guid<Windows::UI::Input::Spatial::ISpatialInteractionSource3>{ static constexpr GUID value{ 0x0406D9F9,0x9AFD,0x44F9,{ 0x85,0xDC,0x70,0x00,0x23,0xA9,0x62,0xE3 } }; };
@@ -561,6 +565,13 @@ struct consume_Windows_UI_Input_Spatial_ISpatialInteractionManagerStatics
     Windows::UI::Input::Spatial::SpatialInteractionManager GetForCurrentView() const;
 };
 template <> struct consume<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics> { template <typename D> using type = consume_Windows_UI_Input_Spatial_ISpatialInteractionManagerStatics<D>; };
+
+template <typename D>
+struct consume_Windows_UI_Input_Spatial_ISpatialInteractionManagerStatics2
+{
+    Windows::UI::Input::Spatial::SpatialInteractionManager GetForHWND(HWND window, const GUID * guid) const;
+};
+template <> struct consume<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2> { template <typename D> using type = consume_Windows_UI_Input_Spatial_ISpatialInteractionManagerStatics2<D>; };
 
 template <typename D>
 struct consume_Windows_UI_Input_Spatial_ISpatialInteractionSource
@@ -913,6 +924,11 @@ template <> struct abi<Windows::UI::Input::Spatial::ISpatialInteractionManager>{
 template <> struct abi<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics>{ struct type : ::IInspectable
 {
     virtual HRESULT __stdcall GetForCurrentView(::IUnknown** value) = 0;
+};};
+
+template <> struct abi<Windows::UI::Input::Spatial::ISpatialInteractionManagerStatics2>{ struct type : ::IInspectable
+{
+    virtual HRESULT __stdcall GetForHWND(HWND window, const GUID * guid, ::IUnknown** value) = 0;
 };};
 
 template <> struct abi<Windows::UI::Input::Spatial::ISpatialInteractionSource>{ struct type : ::IInspectable
